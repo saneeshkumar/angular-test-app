@@ -1,4 +1,7 @@
 {
   "files.autoSave": "afterDelay",
-  "html.format.wrapAttributes": "force-aligned"
+  "html.format.wrapAttributes": "force-aligned",
+  "staticWebApps.appSubpath": "/",
+  "staticWebApps.apiSubpath": "",
+  "staticWebApps.appArtifactSubpath": "/dist/APM"
 }
