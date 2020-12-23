@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: demo-angular-app
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - demo-angular-app
+  http:
+  - name: "demo-angular-app"
+    match:
+    - uri:
+        prefix: "/"
+    route:
+    - destination:
+        host: demo-angular-app
+        port:
+          number: 80
+    timeout: 30ms
+    retries:
+      attempts: 1
+      perTryTimeout: 500ms
+      retryOn: 5xx

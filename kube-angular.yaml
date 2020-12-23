@@ -2,10 +2,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: demo-angular-app
+  namespace: ns-kuruvsaadm-system
   labels:
     run: demo-angular-app
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
   - port: 80
     targetPort: 80
@@ -17,12 +18,18 @@ spec:
   selector:
     run: demo-angular-app
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: demo-angular-app
+  namespace: ns-kuruvsaadm-system
+  labels:
+    run: demo-angular-app
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      run: demo-angular-app
   template:
     metadata:
       labels:
@@ -30,7 +37,8 @@ spec:
     spec:
       containers:
       - name: demo-angular-app
-        image: saneeshnair/demo-angular-app
+        image: mljaksclusterreg.azurecr.io/demo-angular-app
         ports:
         - containerPort: 80
         - containerPort: 443
+
