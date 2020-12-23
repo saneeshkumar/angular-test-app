@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
       - name: demo-angular-app
-        image: mljaksclusterreg.azurecr.io/demo-angular-app
+        image: saneeshnair/demo-angular-app
         ports:
         - containerPort: 80
         - containerPort: 443
